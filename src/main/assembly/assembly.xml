@@ -1,0 +1,55 @@
+<assembly>
+
+    <id>bin</id>
+
+    <formats>
+        <format>dir</format>
+        <format>tar.gz</format>
+    </formats>
+
+    <fileSets>
+
+        <!-- Expanded Karaf Standard Distribution -->
+        <fileSet>
+            <directory>target/dependencies/apache-activemq-${activemq.version}</directory>
+            <outputDirectory>/</outputDirectory>
+            <excludes>
+                <exclude>bin/env</exclude>
+                <exclude>conf/activemq.xml</exclude>
+                <exclude>conf/jmx.access</exclude>
+                <exclude>conf/jmx.password</exclude>
+                <exclude>conf/log4j.properties</exclude>
+                <exclude>examples/**</exclude>
+                <exclude>webapps-demo/**</exclude>
+                <exclude>activemq-all-${activemq.version}.jar</exclude>
+                <exclude>LICENSE</exclude>
+                <exclude>NOTICE</exclude>
+                <exclude>README.txt</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/distribution/bin</directory>
+            <outputDirectory>/bin</outputDirectory>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/distribution/conf</directory>
+            <outputDirectory>/conf</outputDirectory>
+            <excludes>
+                <exclude>jmx.password</exclude>
+            </excludes>
+        </fileSet>
+
+        <fileSet>
+            <directory>src/main/distribution/conf</directory>
+            <outputDirectory>/conf</outputDirectory>
+            <includes>
+                <include>jmx.password</include>
+            </includes>
+            <fileMode>600</fileMode>
+        </fileSet>
+
+    </fileSets>
+
+</assembly>
