@@ -50,10 +50,6 @@
                         </deadLetterStrategy>
                     </policyEntry>
 
-                    <policyEntry>
-                        
-                    </policyEntry>
-
                     <policyEntry topic=">" producerFlowControl="false" memoryLimit="1mb"/>
 
                 </policyEntries>
