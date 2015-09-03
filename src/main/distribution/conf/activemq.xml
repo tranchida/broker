@@ -81,7 +81,23 @@
             http://activemq.apache.org/persistence.html
         -->
         <persistenceAdapter>
-            <kahaDB directory="${activemq.data}/kahadb"/>
+            <mKahaDB directory="${activemq.data}/kahadb">
+                <filteredPersistenceAdapters>
+                  <!-- match all DLQ.> queues -->
+                  <filteredKahaDB queue="DLQ.>">
+                    <persistenceAdapter>
+                      <kahaDB journalMaxFileLength="32mb"/>
+                    </persistenceAdapter>
+                  </filteredKahaDB>
+
+                  <!-- match all destinations -->
+                  <filteredKahaDB>
+                    <persistenceAdapter>
+                      <kahaDB enableJournalDiskSyncs="false"/>
+                    </persistenceAdapter>
+                  </filteredKahaDB>
+                </filteredPersistenceAdapters>
+            </mKahaDB>
         </persistenceAdapter>
 
 
